@@ -83,6 +83,11 @@ private:
    */
   static void deleteAll(BSTNodeInt* n);
 
+  /*
+   * Helper function that gets the height of a tree by comparing the left
+   * side of the tree via root, to the right side of the tree. 
+   * Returns the max height.  
+   */
   int heightHelper(BSTNodeInt* root) const;
 
 

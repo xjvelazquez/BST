@@ -13,8 +13,7 @@ using namespace std;
 /**
  * A test driver for the BST int class and class template.
  * PA1 CSE 100 2016
- * Author: Christine Alvarado and YOU
- * TODO: Add more tests
+ * Author: Jaime Velazquez and Nha Do.
  */
 int main() {
 
@@ -182,6 +181,9 @@ int main() {
 
     // ADD MORE TESTS HERE.  You might also want to change what is input
     // into the vector v.
+
+
+//-----------------------------------------------
     
     // Test for the height 
     int height = b.height();
@@ -213,6 +215,8 @@ int main() {
     else{
 	cout << "Correct! Height is: " << height3 << endl;
     }
+
+// ----------------------------------------------
 
     // Testing empty() 
     bool result2 = c.empty();

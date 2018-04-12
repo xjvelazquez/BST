@@ -27,7 +27,6 @@ bool BSTInt::insert(int item)
 {
   if (!root) {
     root = new BSTNodeInt(item);
-	cout << "Creates root node: "<< root << endl;
     ++isize;
     return true;
   }
@@ -35,7 +34,7 @@ bool BSTInt::insert(int item)
   BSTNodeInt* curr = root;
   
   while (curr) {
-    if (item < curr->data) {
+    if (item < curr->data) { // If item has value less than curr node's.
       if (curr->left){
 	curr = curr->left; // Continues with the left child
       }
@@ -43,7 +42,7 @@ bool BSTInt::insert(int item)
 	break;	// item < curr->data, but left child DNE.
       }
     }
-    else if (curr->data < item) {
+    else if (curr->data < item) { // If item has value greater than curr node's
       if (curr->right){
 	curr = curr->right; // Continues with the right child
       }
@@ -59,21 +58,14 @@ bool BSTInt::insert(int item)
   // Ready to insert
   BSTNodeInt* newNode = new BSTNodeInt(item);
   if (item < curr->data) {
-	cout << "if in insert" << endl;
-	cout << "This is curr->data: " << curr->data << endl;
-	cout << "This is item: " << item << endl;
     curr->left = newNode;
     newNode->parent = curr;
   }
   else if (curr->data < item){
-	cout << "else if in insert" << endl;
-	cout << "This is curr->data: " << curr->data << endl;
-	cout << "This is item: " << item << endl;
     curr->right = newNode;
     newNode->parent = curr;
   }	
   else{
-	cout << "else in insert" << endl;
     return false;
   }
 
@@ -132,6 +124,11 @@ int BSTInt::height() const
   return height;
 }
 
+/*
+ * Helper function that gets the height of a tree by comparing the left
+ * side of the tree via root, to the right side of the tree. 
+ * Returns the max height.  
+ */
 int BSTInt::heightHelper(BSTNodeInt* root) const{
   if (root){
      return 1 + max(heightHelper(root->left),heightHelper(root->right));
