@@ -42,7 +42,8 @@ public:
    */ 
 template<typename Data>
 BSTIterator<Data>::BSTIterator(BSTNode<Data>* curr) {
-  // TODO
+  
+  this->curr = curr;
   // Remember the keyword "this" which stores a pointer to the calling object.
   // It will be helpful to distinguish between the parameter "curr" and the 
   // member variable "curr"
@@ -51,12 +52,16 @@ BSTIterator<Data>::BSTIterator(BSTNode<Data>* curr) {
 /** Dereference operator. */
 template<typename Data>
 Data BSTIterator<Data>::operator*() const {
+  if (!curr){
+     return NULL;
+  }
   return curr->data;
 }
   
 /** Pre-increment operator. */
 template<typename Data>
 BSTIterator<Data>& BSTIterator<Data>::operator++() {
+	std::cout << "Inside pre-increment \n";
   // Call the successor method of the BSTNode pointed to by curr.
   curr = curr->successor();
   return *this;
@@ -70,27 +75,40 @@ BSTIterator<Data> BSTIterator<Data>::operator++(int) {
   return before;
 }
 
-/** Equality test operator. */ // TODO
+/** Equality test operator. */ // 
 template<typename Data>
 bool BSTIterator<Data>::operator==(BSTIterator<Data> const & other) const {
-  // TODO
+  
   // Notice that other is a reference and not a pointer, thus it cannot be null
   // Return true if other is NOT equal to the calling object
   // Two iterators are equal if they point to the same BSTNode in the same BST  
-
-  return false;
+  
+  if (this->curr == other.curr){
+	std::cout << "Inside ==, return true\n";
+      return true;
+  }
+  else{
+	std::cout << "Inside ==, return false\n";
+      return false;
+  } 
 
 }
 
 /** Inequality test operator. */ 
 template<typename Data>
 bool BSTIterator<Data>::operator!=(BSTIterator<Data> const & other) const {
-  // TODO
+ 
   // Notice that other is a reference and not a pointer, thus it cannot be null
   // Return true if other is NOT equal to the calling object
   // Two iterators are equal if they point to the same BSTNode in the same BST
-
-  return false;
+  if (this->curr == other.curr){
+	std::cout << "Inside !=, return false\n";
+      return false;
+  }
+  else{
+	std::cout << "Inside !=, return true\n";
+      return true;
+  }
 
 }
 

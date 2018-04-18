@@ -2,10 +2,12 @@
 #define BSTNODE_HPP
 #include <iostream>
 #include <iomanip>
+#include <string>
+
 
 /** Starter code for PA1, CSE 100 2016
  * Authors: Christine Alvarado, based on code by Paul Kube 
- * ADD YOUR NAME AS AN AUTHOR HERE
+ * Jaime Velazquez, Nha Do
  */
 
 template<typename Data>
@@ -32,6 +34,10 @@ public:
    */ // TODO
   BSTNode<Data>* successor(); 
 
+  /*
+   * Helper function to the successor function. 
+   */ 
+  BSTNode<Data>* successorHelper(BSTNode<Data>* curr);
 }; 
 
 
@@ -46,8 +52,37 @@ BSTNode<Data>::BSTNode(const Data & d) : data(d), left(0), right(0), parent(0) {
 template <typename Data>
 BSTNode<Data>* BSTNode<Data>::successor()
 {
-  //TODO 
-  return NULL;
+  BSTNode<Data>* curr = this;
+
+	std::cout << "this is curr " << curr->data << "\n";
+//	std::cout << "this is curr-> parent: " << curr->parent->data << "\n";
+  if (curr->right){
+	std::cout << "Inside curr->right, in successor\n";
+     return successorHelper(curr->right);
+  }
+  //if (curr->right == NULL){
+//	std::cout << "Inside parent and right child dont exist\n";
+//     return 0;   // parent nor right child exist, no successor
+//  }
+
+  BSTNode<Data>* parentTmp = curr->parent;
+  while (parentTmp && curr == parentTmp->right){
+     curr = parentTmp;
+     parentTmp = parentTmp->parent;
+  }
+  //std::cout << "returning parentTmp: " << parentTmp->data << "\n";
+  return parentTmp;
+}
+
+template <typename Data>
+BSTNode<Data>* BSTNode<Data>::successorHelper(BSTNode<Data>* curr){
+  BSTNode<Data>* tmp = curr;
+  
+  while (tmp->left){
+    tmp = tmp->left;  // Gets the leftmost node 
+  }
+  return tmp;
+
 }
 
 /** Overload operator<< to print a BSTNode's fields to an ostream. */

@@ -108,13 +108,14 @@ int main() {
     }
 
     /* UNCOMMENT THE LINES BELOW TO TEST THE TEMPLATE-BASED ITERATOR */
-
-    /*
+	
+    
     // Test the template version of the BST  with ints 
     BST<int> btemp;
     for (int item : v) {
         // The auto type here is the pair of BSTIterator<int>, bool
         cout << "Inserting " << item << " into the int template-based BST...";
+
         auto p = btemp.insert(item);
         if (*(p.first) != item) {
             cout << "Wrong iterator returned.  "
@@ -134,6 +135,7 @@ int main() {
     for (int item: v) {
         cout << "Finding " << item << "...." << endl;
         BSTIterator<int> foundIt = btemp.find(item);
+	
         if (*(foundIt) != item) {
             cout << "incorrect value returned.  Expected iterator pointing to "
                  << item << " but found iterator pointing to " << *(foundIt) 
@@ -161,12 +163,14 @@ int main() {
     auto it = btemp.begin();
     for(; vit != ven; ++vit) {
         if(! (it != en) ) {
+	    cout << "inside if statemnt" << endl;
             cout << *it << "," << *vit 
                  << ": Early termination of BST iteration." << endl;
             return -1;
 
         }
-        cout << *it << endl;
+        cout << "this is *it " << *it << endl;
+	cout << "this is *vit " << *vit << endl;
         if(*it != *vit) {
             cout << *it << "," << *vit 
                  << ": Incorrect inorder iteration of BST." << endl;
@@ -174,10 +178,10 @@ int main() {
         }
         ++it;
     }
-
+    	
     cout << "success!" << endl;
 
-    */
+    
 
     // ADD MORE TESTS HERE.  You might also want to change what is input
     // into the vector v.
@@ -227,6 +231,11 @@ int main() {
 	cout << "Incorrect!" << endl;
 	return -1;
     }
+
+
+//-------------------------------------
+
+    
 
 
     cout << "All tests passed!" << endl;
