@@ -131,7 +131,7 @@ int BSTInt::height() const
  */
 int BSTInt::heightHelper(BSTNodeInt* root) const{
   if (root){
-     return 1 + max(heightHelper(root->left),heightHelper(root->right));
+     return 1 + std::max(heightHelper(root->left),heightHelper(root->right));
   }
   else{
      return -1;

@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
             getline(cin, name);
             
             // TODO: Chainge the if statment to check is name is in the BST
-            if (*(bst.find(name)) == name) {
+            if (bst.find(name) != NULL){
                 cout << name << " found!" << endl;
             }
             else {

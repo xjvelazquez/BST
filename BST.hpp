@@ -118,7 +118,6 @@ std::pair<BSTIterator<Data>, bool> BST<Data>::insert(const Data& item) {
   bool secondTmp;  // bool return value
  
   if (!root) { // Root case
-	std::cout << "Inside !root case" << std::endl;
     root = new BSTNode<Data>(item);
     ++isize;
     secondTmp = true;
@@ -187,24 +186,20 @@ std::pair<BSTIterator<Data>, bool> BST<Data>::insert(const Data& item) {
 template <typename Data>
 BSTIterator<Data> BST<Data>::find(const Data& item) const
 {
-	std::cout << "Inside find\n";
   BSTNode<Data>* curr = root;
   while (curr) {
     if (curr->data < item) {
-	std::cout << "Inside if curr->data < item\n";
       curr = curr->right; // Continues to the right child.
     }
     else if (item < curr->data) {
       curr = curr->left;  // Continues to the left child
     }
     else {
-	std::cout << "Inside else statement\n";
       BSTIterator<Data> returnIterator(curr); // Is found
       return returnIterator;
     }
   }
-  return nullptr;
-  //return BSTIterator<Data>(nullptr);
+  return BSTIterator<Data>(nullptr);
 
 }
 

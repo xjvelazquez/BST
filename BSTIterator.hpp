@@ -61,7 +61,6 @@ Data BSTIterator<Data>::operator*() const {
 /** Pre-increment operator. */
 template<typename Data>
 BSTIterator<Data>& BSTIterator<Data>::operator++() {
-	std::cout << "Inside pre-increment \n";
   // Call the successor method of the BSTNode pointed to by curr.
   curr = curr->successor();
   return *this;
@@ -84,11 +83,9 @@ bool BSTIterator<Data>::operator==(BSTIterator<Data> const & other) const {
   // Two iterators are equal if they point to the same BSTNode in the same BST  
   
   if (this->curr == other.curr){
-	std::cout << "Inside ==, return true\n";
       return true;
   }
   else{
-	std::cout << "Inside ==, return false\n";
       return false;
   } 
 
@@ -102,11 +99,9 @@ bool BSTIterator<Data>::operator!=(BSTIterator<Data> const & other) const {
   // Return true if other is NOT equal to the calling object
   // Two iterators are equal if they point to the same BSTNode in the same BST
   if (this->curr == other.curr){
-	std::cout << "Inside !=, return false\n";
       return false;
   }
   else{
-	std::cout << "Inside !=, return true\n";
       return true;
   }
 

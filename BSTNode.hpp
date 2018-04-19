@@ -54,10 +54,7 @@ BSTNode<Data>* BSTNode<Data>::successor()
 {
   BSTNode<Data>* curr = this;
 
-	std::cout << "this is curr " << curr->data << "\n";
-//	std::cout << "this is curr-> parent: " << curr->parent->data << "\n";
   if (curr->right){
-	std::cout << "Inside curr->right, in successor\n";
      return successorHelper(curr->right);
   }
   //if (curr->right == NULL){
