@@ -234,7 +234,8 @@ int BST<Data>::height() const
 template <typename Data> 
 int BST<Data>::heightHelper(BSTNode<Data>* root) const{
   if (root){
-     return 1 + std::max(heightHelper(root->left),heightHelper(root->right));
+   int maxHeight = std::max(heightHelper(root->left),heightHelper(root->right));
+   return 1 + maxHeight;
   }
   else{
      return -1;
