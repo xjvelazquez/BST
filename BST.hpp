@@ -59,7 +59,7 @@ public:
 
 
   /** Return true if the BST is empty, else false.
-   */ // TODO
+   */ 
   bool empty() const;
 
   /** Return an iterator pointing to the first (smallest) item in the BST.
@@ -203,7 +203,8 @@ BSTIterator<Data> BST<Data>::find(const Data& item) const
       return returnIterator;
     }
   }
-  return BSTIterator<Data>(nullptr);
+  return nullptr;
+  //return BSTIterator<Data>(nullptr);
 
 }
 
@@ -238,7 +239,7 @@ int BST<Data>::height() const
 template <typename Data> 
 int BST<Data>::heightHelper(BSTNode<Data>* root) const{
   if (root){
-     return 1 + max(heightHelper(root->left),heightHelper(root->right));
+     return 1 + std::max(heightHelper(root->left),heightHelper(root->right));
   }
   else{
      return -1;
